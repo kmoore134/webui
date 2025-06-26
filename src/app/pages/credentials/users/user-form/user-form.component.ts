@@ -125,6 +125,12 @@ export class OldUserFormComponent implements OnInit {
       : this.translate.instant(this.tooltips.smb);
   }
 
+  get webshareTooltip(): string {
+    return this.isEditingBuiltinUser
+      ? this.translate.instant(this.tooltips.webshareBuiltin)
+      : this.translate.instant(this.tooltips.webshare);
+  }
+
   get title(): string {
     return this.isNewUser ? this.translate.instant('Add User') : this.translate.instant('Edit User');
   }
@@ -171,6 +177,7 @@ export class OldUserFormComponent implements OnInit {
     sudo_commands_nopasswd: [[] as string[]],
     sudo_commands_nopasswd_all: [false],
     smb: [true],
+    webshare: [false],
     ssh_password_enabled: [false],
   });
 
@@ -193,6 +200,8 @@ export class OldUserFormComponent implements OnInit {
     smb: helptextUsers.smbTooltip,
     smbBuiltin: helptextUsers.smbBuiltin,
     smbStig: helptextUsers.smbStig,
+    webshare: helptextUsers.webshareTooltip,
+    webshareBuiltin: helptextUsers.webshareBuiltin,
   };
 
   readonly groupOptions$ = this.api.call('group.query', [[['local', '=', true]]]).pipe(
@@ -432,6 +441,7 @@ export class OldUserFormComponent implements OnInit {
       password_disabled: disablePassword,
       shell: values.shell,
       smb: values.smb || false,
+      webshare: values.webshare || false,
       ssh_password_enabled: values.ssh_password_enabled,
       sshpubkey: values.sshpubkey ? values.sshpubkey.trim() : values.sshpubkey,
       sudo_commands: values.sudo_commands_all ? [allCommands] : values.sudo_commands,
@@ -546,6 +556,7 @@ export class OldUserFormComponent implements OnInit {
       password_disabled: user.password_disabled,
       shell: user.shell,
       smb: user.smb,
+      webshare: user.webshare,
       sshpubkey: user.sshpubkey,
       ssh_password_enabled: user.ssh_password_enabled,
       sudo_commands: user.sudo_commands?.includes(allCommands) ? [] : user.sudo_commands,
@@ -569,6 +580,7 @@ export class OldUserFormComponent implements OnInit {
 
     if (user.builtin) {
       this.form.controls.smb.disable();
+      this.form.controls.webshare.disable();
     }
 
     this.setNamesInUseValidator(user.username);

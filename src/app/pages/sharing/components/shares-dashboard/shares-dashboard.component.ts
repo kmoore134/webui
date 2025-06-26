@@ -15,6 +15,7 @@ import { sharesDashboardElements } from 'app/pages/sharing/components/shares-das
 import { IscsiCardComponent } from './iscsi-card/iscsi-card.component';
 import { NfsCardComponent } from './nfs-card/nfs-card.component';
 import { SmbCardComponent } from './smb-card/smb-card.component';
+import { WebShareCardComponent } from './webshare-card/webshare-card.component';
 
 @UntilDestroy()
 @Component({
@@ -28,6 +29,7 @@ import { SmbCardComponent } from './smb-card/smb-card.component';
     NfsCardComponent,
     IscsiCardComponent,
     NvmeOfCardComponent,
+    WebShareCardComponent,
     EmptyComponent,
     TranslateModule,
     PageHeaderComponent,

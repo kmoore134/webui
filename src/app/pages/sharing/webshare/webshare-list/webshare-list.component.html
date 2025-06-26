@@ -1,0 +1,32 @@
+<ix-page-header></ix-page-header>
+
+@if (!hasWebShares()) {
+  <ix-empty [conf]="emptyConfig"></ix-empty>
+} @else {
+  <div class="list-wrapper">
+    <div class="list-header">
+      <h2>{{ 'WebShares' | translate }}</h2>
+      <button
+        mat-button
+        color="primary"
+        ixTest="add-webshare"
+        (click)="doAdd()"
+      >
+        {{ 'Add' | translate }}
+      </button>
+    </div>
+
+    <ix-table>
+      <thead
+        ix-table-head
+        [columns]="columns"
+        [dataProvider]="dataProvider"
+      ></thead>
+      <tbody
+        ix-table-body
+        [columns]="columns"
+        [dataProvider]="dataProvider"
+      ></tbody>
+    </ix-table>
+  </div>
+}

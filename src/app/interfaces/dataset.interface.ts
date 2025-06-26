@@ -191,6 +191,7 @@ export interface DatasetDetails {
   smb_shares?: { enabled: boolean; path: string; share_name: string }[];
   nfs_shares?: { enabled: boolean; path: string }[];
   iscsi_shares?: { enabled: boolean; type: IscsiExtentType; path: string }[];
+  webshares?: { enabled: boolean; path: string; name: string; search_indexed?: boolean; inherited?: boolean }[];
   vms?: { name: string; path: string }[];
   apps?: { name: string; path: string }[];
   children?: DatasetDetails[];

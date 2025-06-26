@@ -54,3 +54,18 @@
     [matTooltip]="'Dataset is shared via iSCSI' | translate"
   ></ix-icon>
 }
+
+@if (directWebShares().length) {
+  <ix-icon
+    name="ix-webshare"
+    [matTooltip]="'Dataset is shared via WebShare' | translate"
+  ></ix-icon>
+}
+
+@if (inheritedWebShares().length) {
+  <ix-icon
+    name="ix-webshare"
+    class="inherited-share"
+    [matTooltip]="inheritedWebShareTooltip()"
+  ></ix-icon>
+}

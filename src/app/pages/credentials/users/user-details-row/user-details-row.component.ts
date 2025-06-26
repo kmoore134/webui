@@ -106,6 +106,10 @@ export class UserDetailsRowComponent implements OnInit {
         value: this.yesNoPipe.transform(user.smb),
       },
       {
+        label: this.translate.instant('WebShare Access'),
+        value: this.yesNoPipe.transform(user.webshare),
+      },
+      {
         label: 'SSH',
         value: this.getSshStatus(user),
       },
